@@ -13089,11 +13089,11 @@ html[data-theme="dark"] #view-scrollbar {
   }
 
   /* 左栏品牌标题 */
-  .sider-brand__logo {
+  .sider-brand__mark {
     display: block;
-    width: 28px; height: 28px;
-    margin-bottom: 12px;
-    border-radius: 8px;
+    width: auto;
+    height: 22px;
+    flex: 0 0 auto;
   }
   .sider-brand {
     padding: 22px 16px 18px;
@@ -13109,7 +13109,9 @@ html[data-theme="dark"] #view-scrollbar {
     text-transform: uppercase;
   }
   .sider-brand__title {
-    display: block;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
     font-size: 15px;
     line-height: 22px;
     font-weight: 600;
@@ -13224,9 +13226,8 @@ html[data-theme="dark"] #view-scrollbar {
 
   <aside class="sider" aria-label="组件导航">
       <div class="sider-brand">
-        <img class="sider-brand__logo" src="assets/answer-logo-v2.png" alt="" width="28" height="28">
         <span class="sider-brand__kicker">CASE 06 · 设计规范</span>
-        <span class="sider-brand__title">HUANG Design System</span>
+        <span class="sider-brand__title"><img class="sider-brand__mark" src="assets/brand-logo.png" alt="">HUANG Design System</span>
       </div>
       <p class="sider__group">Token</p>
       <a class="sider__item" href="#/color" data-route="color"><span class="sider__item-en">Color</span><span class="sider__item-zh">颜色</span></a>
