@@ -13091,10 +13091,16 @@ html[data-theme="dark"] #view-scrollbar {
   /* 左栏品牌标题 */
   .sider-brand__mark {
     display: block;
-    width: auto;
-    height: 22px;
+    width: 28px; height: 28px;
     flex: 0 0 auto;
+    border-radius: 8px;
   }
+  .sider-brand__name {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .sider-brand__line { display: block; }
   .sider-brand {
     padding: 22px 16px 18px;
     border-bottom: 1px solid var(--shell-border);
@@ -13111,9 +13117,9 @@ html[data-theme="dark"] #view-scrollbar {
   .sider-brand__title {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
     font-size: 15px;
-    line-height: 22px;
+    line-height: 1.35;
     font-weight: 600;
     letter-spacing: -.01em;
     color: var(--shell-text);
@@ -13227,7 +13233,7 @@ html[data-theme="dark"] #view-scrollbar {
   <aside class="sider" aria-label="组件导航">
       <div class="sider-brand">
         <span class="sider-brand__kicker">CASE 06 · 设计规范</span>
-        <span class="sider-brand__title"><img class="sider-brand__mark" src="assets/brand-logo.png" alt="">HUANG Design System</span>
+        <span class="sider-brand__title"><img class="sider-brand__mark" src="data:image/png;base64,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" alt="HUANG Design System" width="28" height="28"><span class="sider-brand__name"><span class="sider-brand__line">HUANG</span><span class="sider-brand__line">Design System</span></span></span>
       </div>
       <p class="sider__group">Token</p>
       <a class="sider__item" href="#/color" data-route="color"><span class="sider__item-en">Color</span><span class="sider__item-zh">颜色</span></a>
