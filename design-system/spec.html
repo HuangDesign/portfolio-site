@@ -55,7 +55,6 @@ body {
 }
 
 .app-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: inherit; }
-/* TODO: 设计稿未提供 Answer logo 资源，暂用实心圆占位 */
 .app-brand__logo { flex: 0 0 24px; width: 24px; height: 24px; object-fit: contain; border-radius: 6px; background: transparent; }
 .app-brand__text { font-size: 18px; font-weight: 600; line-height: 24px; color: var(--shell-text); }
 .app-brand__tag {
@@ -12886,6 +12885,198 @@ html[data-theme="dark"] #view-scrollbar {
     border-right: 0; border-bottom: 1px solid var(--shell-border);
   }
 }
+/* ===== 反馈通知组件样式：同步自 Agent-guifan（含 Message / Task Notification） ===== */
+/* ---------- Message 全局提示 ---------- */
+#view-message {--color-text-icon-primary: #12222E;
+  --color-text-icon-secondary: #33495A;
+  --color-text-icon-tertiary: #6A7F91;
+  --color-text-icon-brand-default: #2E8FCC;
+  --color-bg-white: #FFFFFF;
+  --color-bg-gray: rgba(13, 26, 38, 0.05);
+  --color-bg-gray-hover: rgba(13, 26, 38, 0.08);
+  --color-bg-action: #2E8FCC;
+  --color-bg-action-hover: #2A81B8;
+  --color-border-default: rgba(13, 26, 38, 0.08);
+  --color-divider-default: rgba(13, 26, 38, 0.08);
+  --color-shadow-core: rgba(0, 0, 0, 0.03);
+  --color-shadow-mid: rgba(0, 0, 0, 0.06);
+  --color-shadow-soft: rgba(0, 0, 0, 0.10);
+  --font-sans: "PingFang SC", "PingFang TC", -apple-system, BlinkMacSystemFont,
+               "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;}
+#view-message, #view-message * {box-sizing: border-box;}
+#view-message {margin: 0;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 28px;
+  color: var(--color-text-icon-secondary);
+  background: #ffffff;
+  -webkit-font-smoothing: antialiased;}
+#view-message .doc-main {display: flex; align-items: flex-start; width: 100%; max-width: 1140px; padding: 32px 0 64px 48px;}
+#view-message .doc-content {flex: 1 1 auto; min-width: 0; max-width: 928px;}
+#view-message .doc-toc {position: sticky; top: 96px; flex: 0 0 140px; width: 140px; margin-left: 12px;}
+#view-message .toc__item {display: block; padding: 4px 0; font-size: 12px; line-height: 18.86px; color: var(--color-text-icon-tertiary); text-decoration: none;}
+#view-message .toc__item.is-active {font-weight: 500; color: var(--color-text-icon-primary);}
+#view-message .doc-title {margin: 0 0 16px; font-size: 32px; font-weight: 600; line-height: 38.74px; color: var(--color-text-icon-primary);}
+#view-message .doc-desc, #view-message .doc-p {margin: 0; font-size: 14px; line-height: 28px; color: var(--color-text-icon-secondary);}
+#view-message .doc-p {margin-top: 16px;}
+#view-message .doc-rule {height: 0; margin: 40px 0 0; border: 0; border-top: 1px solid var(--color-divider-default);}
+#view-message .doc-h2 {position: relative; margin: 40px 0 16px; font-size: 24px; font-weight: 500; line-height: 32px; color: var(--color-text-icon-primary); scroll-margin-top: 80px;}
+#view-message .doc-anchor {margin-left: 6px; font-weight: 400; color: var(--color-text-icon-tertiary); text-decoration: none; opacity: 0;}
+#view-message .doc-h2:hover .doc-anchor {opacity: 1;}
+#view-message .doc-list {margin: 12px 0 0; padding-left: 20px; font-size: 14px; line-height: 28px; color: var(--color-text-icon-secondary);}
+#view-message .doc-list li {margin: 4px 0;}
+#view-message .spec-table {width: 100%; margin-top: 16px; border-collapse: collapse; font-size: 13px; line-height: 20px;}
+#view-message .spec-table th, #view-message .spec-table td {padding: 12px 24px; text-align: left; border-bottom: 1px solid var(--color-border-default);}
+#view-message .spec-table th {font-weight: 500; color: var(--color-text-icon-primary); background: var(--color-bg-gray);}
+#view-message .spec-table td {color: var(--color-text-icon-secondary);}
+#view-message .spec-table td:first-child {color: var(--color-text-icon-primary);}
+#view-message .msg {display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 38px;
+  padding: 8px 16px;
+  background: var(--color-bg-white);
+  border: 1px solid var(--color-border-default);
+  border-radius: 999px;
+  box-shadow:
+    0 9px 28px 8px var(--color-shadow-core),
+    0 6px 16px 0 var(--color-shadow-mid),
+    0 3px 6px -4px var(--color-shadow-soft);
+  white-space: nowrap;}
+#view-message .msg__text {font-size: 14px; line-height: 22px; color: var(--color-text-icon-primary);}
+#view-message .msg__link {font-size: 14px; line-height: 22px; color: var(--color-text-icon-brand-default); cursor: pointer;}
+#view-message .msg__close {display: inline-flex; align-items: center; justify-content: center;
+  width: 20px; height: 20px; padding: 4px;
+  border: 0; border-radius: 999px; background: transparent;
+  color: var(--color-text-icon-tertiary); cursor: pointer;}
+#view-message .msg__close:hover {background: var(--color-bg-gray);}
+#view-message .msg__close svg {width: 12px; height: 12px; display: block;}
+#view-message .nt {display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 420px;
+  max-width: 100%;
+  padding: 16px;
+  background: var(--color-bg-white);
+  border: 1px solid var(--color-border-default);
+  border-radius: 16px;
+  box-shadow:
+    0 9px 28px 8px var(--color-shadow-core),
+    0 6px 16px 0 var(--color-shadow-mid),
+    0 3px 6px -4px var(--color-shadow-soft);}
+#view-message .nt--wide {width: 800px;}
+#view-message .nt__top {display: flex; gap: 8px; align-items: flex-start; width: 100%;}
+#view-message .nt__icon {display: inline-flex; flex: none; width: 24px; height: 24px;}
+#view-message .nt__icon svg {width: 24px; height: 24px; display: block;}
+#view-message .nt__body {display: flex; flex: 1 1 0; flex-direction: column; gap: 8px; min-width: 0;}
+#view-message .nt__title-row {display: flex; align-items: center; gap: 8px;}
+#view-message .nt__title {flex: 1 1 0; min-width: 0; font-size: 16px; font-weight: 600; line-height: 24px; color: var(--color-text-icon-primary);}
+#view-message .nt__desc {font-size: 14px; line-height: 22px; color: var(--color-text-icon-primary);}
+#view-message .nt__close {display: inline-flex; align-items: center; justify-content: center;
+  flex: none; width: 20px; height: 20px; padding: 4px;
+  border: 0; border-radius: 999px; background: transparent;
+  color: var(--color-text-icon-tertiary); cursor: pointer;}
+#view-message .nt__close:hover {background: var(--color-bg-gray);}
+#view-message .nt__close svg {width: 12px; height: 12px; display: block;}
+#view-message .nt__foot {display: flex; align-items: center; justify-content: flex-end; gap: 12px;}
+#view-message .nt__btn {padding: 5px 16px; border: 0; border-radius: 999px;
+  font-family: inherit; font-size: 14px; line-height: 22px; cursor: pointer;}
+#view-message .nt__btn--ghost {background: var(--color-bg-gray); color: var(--color-text-icon-secondary);}
+#view-message .nt__btn--ghost:hover {background: var(--color-bg-gray-hover);}
+#view-message .nt__btn--primary {background: var(--color-bg-action); color: #FFFFFF;}
+#view-message .nt__btn--primary:hover {background: var(--color-bg-action-hover);}
+#view-message .msg-demo {display: flex; flex-wrap: wrap; gap: 16px; margin-top: 16px;}
+#view-message .nt-demo {display: flex; flex-direction: column; gap: 16px; margin-top: 16px;}
+#view-message .doc-h3 {margin: 24px 0 0; font-size: 16px; font-weight: 600; line-height: 28px; color: var(--color-text-icon-primary);}
+/* ---------- Task Notification 跨对话任务通知 ---------- */
+#view-tasknotification {--color-text-icon-primary: #12222E;
+  --color-text-icon-secondary: #33495A;
+  --color-text-icon-tertiary: #6A7F91;
+  --color-bg-white: #FFFFFF;
+  --color-bg-gray: rgba(13, 26, 38, 0.05);
+  --color-bg-overlay-strong: rgba(13, 26, 38, 0.85);
+  --color-text-icon-success-default: #14B3AE;
+  --color-text-icon-warning-default: #DE9A3C;
+  --color-border-default: rgba(13, 26, 38, 0.08);
+  --color-divider-default: rgba(13, 26, 38, 0.08);
+  --font-sans: "PingFang SC", "PingFang TC", -apple-system, BlinkMacSystemFont,
+               "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;}
+#view-tasknotification, #view-tasknotification * {box-sizing: border-box;}
+#view-tasknotification {margin: 0;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 28px;
+  color: var(--color-text-icon-secondary);
+  background: #ffffff;
+  -webkit-font-smoothing: antialiased;}
+#view-tasknotification .doc-main {display: flex; align-items: flex-start; width: 100%; max-width: 1140px; padding: 32px 0 64px 48px;}
+#view-tasknotification .doc-content {flex: 1 1 auto; min-width: 0; max-width: 928px;}
+#view-tasknotification .doc-toc {position: sticky; top: 96px; flex: 0 0 140px; width: 140px; margin-left: 12px;}
+#view-tasknotification .toc__item {display: block; padding: 4px 0; font-size: 12px; line-height: 18.86px; color: var(--color-text-icon-tertiary); text-decoration: none;}
+#view-tasknotification .toc__item.is-active {font-weight: 500; color: var(--color-text-icon-primary);}
+#view-tasknotification .doc-title {margin: 0 0 16px; font-size: 32px; font-weight: 600; line-height: 38.74px; color: var(--color-text-icon-primary);}
+#view-tasknotification .doc-desc, #view-tasknotification .doc-p {margin: 0; font-size: 14px; line-height: 28px; color: var(--color-text-icon-secondary);}
+#view-tasknotification .doc-p {margin-top: 16px;}
+#view-tasknotification .doc-rule {height: 0; margin: 40px 0 0; border: 0; border-top: 1px solid var(--color-divider-default);}
+#view-tasknotification .doc-h2 {position: relative; margin: 40px 0 16px; font-size: 24px; font-weight: 500; line-height: 32px; color: var(--color-text-icon-primary); scroll-margin-top: 80px;}
+#view-tasknotification .doc-anchor {margin-left: 6px; font-weight: 400; color: var(--color-text-icon-tertiary); text-decoration: none; opacity: 0;}
+#view-tasknotification .doc-h2:hover .doc-anchor {opacity: 1;}
+#view-tasknotification .doc-list {margin: 12px 0 0; padding-left: 20px; font-size: 14px; line-height: 28px; color: var(--color-text-icon-secondary);}
+#view-tasknotification .doc-list li {margin: 4px 0;}
+#view-tasknotification .spec-table {width: 100%; margin-top: 16px; border-collapse: collapse; font-size: 13px; line-height: 20px;}
+#view-tasknotification .spec-table th, #view-tasknotification .spec-table td {padding: 12px 24px; text-align: left; border-bottom: 1px solid var(--color-border-default);}
+#view-tasknotification .spec-table th {font-weight: 500; color: var(--color-text-icon-primary); background: var(--color-bg-gray);}
+#view-tasknotification .spec-table td {color: var(--color-text-icon-secondary);}
+#view-tasknotification .spec-table td:first-child {color: var(--color-text-icon-primary);}
+#view-tasknotification .tn {display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: 200px;
+  height: 38px;
+  padding: 8px 16px;
+  background: var(--color-bg-overlay-strong);
+  border-radius: 999px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: background-color .15s ease;}
+#view-tasknotification .tn.is-hover {background: rgba(13, 26, 38, 0.92);}
+#view-tasknotification .tn > svg {flex: none; display: block;}
+#view-tasknotification .tn__text {flex: 1 1 0;
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 14px;
+  line-height: 22px;
+  color: #FFFFFF;}
+#view-tasknotification .tn__step {flex: none;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 18px;
+  color: #FFFFFF;
+  white-space: nowrap;}
+#view-tasknotification .tn__step--dim {color: rgba(255, 255, 255, 0.8);}
+#view-tasknotification .tn__step--success {color: var(--color-text-icon-success-default);}
+#view-tasknotification .tn__step--warning {color: var(--color-text-icon-warning-default);}
+#view-tasknotification .tn--card {display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 12px;
+  width: 200px;
+  height: auto;
+  padding: 8px 16px;
+  border-radius: 24px;
+  cursor: default;}
+#view-tasknotification .tn__head {display: flex; align-items: center; gap: 8px; width: 100%;}
+#view-tasknotification .tn__left {display: flex; flex: 1 1 0; align-items: center; gap: 4px; min-width: 0;}
+#view-tasknotification .tn__left > svg {flex: none; display: block;}
+#view-tasknotification .tn__chev {display: inline-flex; flex: none; width: 16px; height: 16px; color: #FFFFFF;}
+#view-tasknotification .tn__chev svg {width: 16px; height: 16px; display: block;}
+#view-tasknotification .tn__divider {display: block; width: 100%; height: 1px; background: rgba(255, 255, 255, 0.16);}
+#view-tasknotification .tn__row {display: flex; align-items: center; gap: 8px; width: 100%;}
+#view-tasknotification .tn-demo {margin-top: 12px;}
+#view-tasknotification .doc-h3 {margin: 24px 0 0; font-size: 16px; font-weight: 600; line-height: 28px; color: var(--color-text-icon-primary);}
+
 </style>
 <style id="portfolio-embed">
   /* 嵌入作品集时隐藏规范站自带的顶栏，由作品集顶栏统一承载 */
@@ -12898,6 +13089,12 @@ html[data-theme="dark"] #view-scrollbar {
   }
 
   /* 左栏品牌标题 */
+  .sider-brand__logo {
+    display: block;
+    width: 28px; height: 28px;
+    margin-bottom: 12px;
+    border-radius: 8px;
+  }
   .sider-brand {
     padding: 22px 16px 18px;
     border-bottom: 1px solid var(--shell-border);
@@ -12996,7 +13193,7 @@ html[data-theme="dark"] #view-scrollbar {
 
 <header class="app-header">
   <a class="app-brand" href="#/color">
-    <img class="app-brand__logo" src="assets/answer-logo.png" alt="">
+    <img class="app-brand__logo" src="assets/answer-logo-v2.png" alt="">
     <span class="app-brand__text">Answer</span>
     <span class="app-brand__tag">Design System 2.0</span>
   </a>
@@ -13027,6 +13224,7 @@ html[data-theme="dark"] #view-scrollbar {
 
   <aside class="sider" aria-label="组件导航">
       <div class="sider-brand">
+        <img class="sider-brand__logo" src="assets/answer-logo-v2.png" alt="" width="28" height="28">
         <span class="sider-brand__kicker">CASE 06 · 设计规范</span>
         <span class="sider-brand__title">HUANG Design System</span>
       </div>
@@ -13991,7 +14189,7 @@ html[data-theme="dark"] #view-scrollbar {
 
       <div class="ls-demo"><div class="ls" role="navigation" aria-label="左侧工具栏">
   <div class="ls__top">
-    <img class="ls__logo" src="assets/answer-logo.png" width="28" height="28" alt="Answer">
+    <img class="ls__logo" src="assets/answer-logo-v2.png" width="28" height="28" alt="Answer">
     <div class="ls__brand">
       <div class="ls__brand-row">
         <span class="ls__name">Answer</span>
@@ -15369,7 +15567,7 @@ html[data-theme="dark"] #view-scrollbar {
 
           <div class="pb__panel" id="processing-pb-panel">
             <div class="pb-model">
-              <img class="pb-model__logo" src="assets/answer-logo.png" alt="Answer" width="28" height="28">
+              <img class="pb-model__logo" src="assets/answer-logo-v2.png" alt="Answer" width="28" height="28">
               <span class="pb-model__name">Answer</span>
               <span class="pb-model__time">已运行 3m 24s</span>
             </div>
@@ -16852,216 +17050,128 @@ html[data-theme="dark"] #view-scrollbar {
       <div class="doc-content">
 
       <h1 class="doc-title">Message 全局提示</h1>
-      <p class="doc-desc">全局提示分两种：Message 是顶部短时反馈胶囊（4 种语义、可带查看与关闭），Notification 是带标题、说明与双按钮的通知卡（420 / 800 宽）。</p>
+      <p class="doc-desc">轻量的全局反馈：Message 是一条胶囊吐司，Notification 是一张可带操作的通知卡片。</p>
       <hr class="doc-rule">
 
-<h2 id="message-when" class="doc-h2">何时使用<a class="doc-anchor" href="#message-when" aria-label="锚点">#</a></h2>
-      <p class="doc-p">全局提示有两个组件，配合 Alert 使用时要先分清场景：</p>
-      <table class="spec-table">
-        <thead>
-          <tr><th>组件</th><th>场景</th><th>生命周期</th><th>位置</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>Message</td><td>操作完成的<strong>短时反馈</strong>（已复制、保存成功）</td><td>2–3 秒自动消失</td><td>页面顶部 32px</td></tr>
-          <tr><td>Notification</td><td>需要<strong>知晓或处理</strong>的通知（任务完成、需要确认）</td><td>常驻，手动关闭</td><td>右上角（小）/ Input 上方（大）</td></tr>
-          <tr><td>Alert</td><td>嵌在页面里的<strong>常驻提醒</strong>（表单校验、权限不足）</td><td>跟随页面</td><td>内容流中</td></tr>
-        </tbody>
-      </table>
+      <h2 id="message-when" class="doc-h2">何时使用<a class="doc-anchor" href="#message-when" aria-label="锚点">#</a></h2>
+      <ul class="doc-list">
+        <li><strong>Message</strong>：一句话反馈结果，出现在页面顶部，距顶 32px，2–3 秒自动消失；</li>
+        <li><strong>Notification · 小</strong>：需要标题 + 说明 + 操作，出现在页面右上角，距顶部与右侧各 32px；</li>
+        <li><strong>Notification · 大</strong>：出现在输入框上方，与输入框间距 8px，宽度与输入框一致；</li>
+        <li>两者都用 dropdown 三层投影，白底 + 1px 描边。</li>
+      </ul>
       <hr class="doc-rule">
-      <h2 id="message-toast" class="doc-h2">Message 轻提示<a class="doc-anchor" href="#message-toast" aria-label="锚点">#</a></h2>
-      <p class="doc-p">白底胶囊、高 38、左右内边距 16，左侧 20px 图标 + 14/22 文案。四种语义靠<strong>图标</strong>区分，文字始终是主文字色。</p>
-<div class="stage stage--column stage--plain">
-        <div class="toast toast--info"><span class="toast__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-<g transform="translate(0.0 0.0)">
-<path id="message-Subtract" d="M12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2ZM12 9C11.4477 9 11 9.44772 11 10V16C11 16.5523 11.4477 17 12 17C12.5523 17 13 16.5523 13 16V10C13 9.44772 12.5523 9 12 9ZM12 6C11.4477 6 11 6.44772 11 7C11 7.55228 11.4477 8 12 8C12.5523 8 13 7.55228 13 7C13 6.44772 12.5523 6 12 6Z" fill-rule="evenodd" clip-rule="evenodd" fill="currentColor"/>
-</g>
-</svg></span><span class="toast__text">常规消息提示</span></div>
-        <div class="toast toast--success"><span class="toast__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-<g transform="translate(0.0 0.0)">
-<path id="message-Subtract" d="M12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2ZM16.707 8.29297C16.3165 7.90258 15.6835 7.90253 15.293 8.29297L10.666 12.9189L8.70703 10.96C8.31651 10.5696 7.68346 10.5695 7.29297 10.96C6.90269 11.3505 6.90264 11.9836 7.29297 12.374L9.95996 15.04C10.3505 15.4304 10.9835 15.4305 11.374 15.04L16.707 9.70703C17.0975 9.31654 17.0974 8.68349 16.707 8.29297Z" fill-rule="evenodd" clip-rule="evenodd" fill="currentColor"/>
-</g>
-</svg></span><span class="toast__text">成功消息提示</span></div>
-        <div class="toast toast--warning"><span class="toast__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-<g transform="translate(0.0 0.0)">
-<path id="message-Subtract" d="M12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2ZM12 15C11.4477 15 11 15.4477 11 16C11 16.5523 11.4477 17 12 17C12.5523 17 13 16.5523 13 16C13 15.4477 12.5523 15 12 15ZM12 6C11.4477 6 11 6.44772 11 7V13C11 13.5523 11.4477 14 12 14C12.5523 14 13 13.5523 13 13V7C13 6.44772 12.5523 6 12 6Z" fill-rule="evenodd" clip-rule="evenodd" fill="currentColor"/>
-</g>
-</svg></span><span class="toast__text">警告消息提示</span></div>
-        <div class="toast toast--error"><span class="toast__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-<g transform="translate(0.0 0.0)">
-<path id="message-Subtract" d="M12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2ZM15.707 8.29297C15.3165 7.90264 14.6835 7.90262 14.293 8.29297L12 10.5859L9.70703 8.29297C9.31649 7.9026 8.68344 7.9025 8.29297 8.29297C7.90257 8.68345 7.90262 9.31652 8.29297 9.70703L10.5859 12L8.29297 14.293C7.90268 14.6835 7.90266 15.3166 8.29297 15.707C8.68345 16.0973 9.31656 16.0973 9.70703 15.707L12 13.4141L14.293 15.707C14.6835 16.0974 15.3166 16.0974 15.707 15.707C16.0975 15.3166 16.0974 14.6835 15.707 14.293L13.4141 12L15.707 9.70703C16.0974 9.31656 16.0973 8.68347 15.707 8.29297Z" fill-rule="evenodd" clip-rule="evenodd" fill="currentColor"/>
-</g>
-</svg></span><span class="toast__text">错误消息提示</span></div>
+
+      <h2 id="message-message" class="doc-h2">Message<a class="doc-anchor" href="#message-message" aria-label="锚点">#</a></h2>
+      <p class="doc-p">高 38、圆角 999、内边距 8×16，图标 20 + 文字 14/22。四种类型只换图标颜色。</p>
+
+      <div class="msg-demo">
+      <div class="msg"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#2E8FCC"/><circle cx="10" cy="6.6" r="1.15" fill="#fff"/><rect x="8.85" y="9.6" width="2.3" height="4.8" rx="1.15" fill="#fff"/></svg><span class="msg__text">常规消息提示</span></div>
+      <div class="msg"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#14B3AE"/><path d="M5.8 10.4 L8.8 13.4 L14.4 7" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="msg__text">操作成功提示</span></div>
+      <div class="msg"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#EC6A56"/><rect x="8.95" y="5.2" width="2.1" height="6" rx="1.05" fill="#fff"/><circle cx="10" cy="14.6" r="1.05" fill="#fff"/></svg><span class="msg__text">警告消息提示</span></div>
+      <div class="msg"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#D6403A"/><path d="M6.6 6.6 L13.4 13.4 M13.4 6.6 L6.6 13.4" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/></svg><span class="msg__text">错误消息提示</span></div>
       </div>
-      <p class="demo-label">普通 / 成功 / 警告 / 错误 · 144 × 38（宽度随内容增长）</p>
-      <p class="doc-p">同一句提示可以再叠加两种操作，位置在文案右侧、关闭按钮之前：</p>
-<div class="stage stage--column stage--plain">
-        <div class="toast toast--info"><span class="toast__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-<g transform="translate(0.0 0.0)">
-<path id="message-Subtract" d="M12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2ZM12 9C11.4477 9 11 9.44772 11 10V16C11 16.5523 11.4477 17 12 17C12.5523 17 13 16.5523 13 16V10C13 9.44772 12.5523 9 12 9ZM12 6C11.4477 6 11 6.44772 11 7C11 7.55228 11.4477 8 12 8C12.5523 8 13 7.55228 13 7C13 6.44772 12.5523 6 12 6Z" fill-rule="evenodd" clip-rule="evenodd" fill="currentColor"/>
-</g>
-</svg></span><span class="toast__text">常规消息提示</span><span class="toast__action">查看</span></div>
-        <div class="toast toast--success"><span class="toast__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-<g transform="translate(0.0 0.0)">
-<path id="message-Subtract" d="M12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2ZM16.707 8.29297C16.3165 7.90258 15.6835 7.90253 15.293 8.29297L10.666 12.9189L8.70703 10.96C8.31651 10.5696 7.68346 10.5695 7.29297 10.96C6.90269 11.3505 6.90264 11.9836 7.29297 12.374L9.95996 15.04C10.3505 15.4304 10.9835 15.4305 11.374 15.04L16.707 9.70703C17.0975 9.31654 17.0974 8.68349 16.707 8.29297Z" fill-rule="evenodd" clip-rule="evenodd" fill="currentColor"/>
-</g>
-</svg></span><span class="toast__text">已复制到剪贴板</span><button type="button" class="toast__close" aria-label="关闭"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-<g transform="translate(1.7501 1.7501)">
-<path id="message-Union" d="M7.64596 0.146414C7.84118 -0.0488087 8.15772 -0.0487298 8.35299 0.146414C8.54825 0.341676 8.54825 0.658183 8.35299 0.853445L4.95651 4.24944L8.35348 7.64641C8.54854 7.84167 8.54861 8.15824 8.35348 8.35345C8.15828 8.54865 7.84172 8.54853 7.64645 8.35345L4.24947 4.95647L0.853478 8.35345C0.658254 8.54862 0.341705 8.54857 0.146447 8.35345C-0.0488011 8.1582 -0.0487722 7.84168 0.146447 7.64641L3.54244 4.24944L0.146447 0.853445C-0.0488155 0.658183 -0.0488155 0.341676 0.146447 0.146414C0.341714 -0.0487829 0.658237 -0.0488264 0.853478 0.146414L4.24947 3.54241L7.64596 0.146414Z" fill="currentColor"/>
-</g>
-</svg></button></div>
-        <div class="toast toast--warning"><span class="toast__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-<g transform="translate(0.0 0.0)">
-<path id="message-Subtract" d="M12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2ZM12 15C11.4477 15 11 15.4477 11 16C11 16.5523 11.4477 17 12 17C12.5523 17 13 16.5523 13 16C13 15.4477 12.5523 15 12 15ZM12 6C11.4477 6 11 6.44772 11 7V13C11 13.5523 11.4477 14 12 14C12.5523 14 13 13.5523 13 13V7C13 6.44772 12.5523 6 12 6Z" fill-rule="evenodd" clip-rule="evenodd" fill="currentColor"/>
-</g>
-</svg></span><span class="toast__text">同步失败，稍后重试</span><span class="toast__action">查看</span><button type="button" class="toast__close" aria-label="关闭"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-<g transform="translate(1.7501 1.7501)">
-<path id="message-Union" d="M7.64596 0.146414C7.84118 -0.0488087 8.15772 -0.0487298 8.35299 0.146414C8.54825 0.341676 8.54825 0.658183 8.35299 0.853445L4.95651 4.24944L8.35348 7.64641C8.54854 7.84167 8.54861 8.15824 8.35348 8.35345C8.15828 8.54865 7.84172 8.54853 7.64645 8.35345L4.24947 4.95647L0.853478 8.35345C0.658254 8.54862 0.341705 8.54857 0.146447 8.35345C-0.0488011 8.1582 -0.0487722 7.84168 0.146447 7.64641L3.54244 4.24944L0.146447 0.853445C-0.0488155 0.658183 -0.0488155 0.341676 0.146447 0.146414C0.341714 -0.0487829 0.658237 -0.0488264 0.853478 0.146414L4.24947 3.54241L7.64596 0.146414Z" fill="currentColor"/>
-</g>
-</svg></button></div>
+
+      <h3 class="doc-h3">带「查看」与「关闭」</h3>
+      <div class="msg-demo">
+      <div class="msg"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#2E8FCC"/><circle cx="10" cy="6.6" r="1.15" fill="#fff"/><rect x="8.85" y="9.6" width="2.3" height="4.8" rx="1.15" fill="#fff"/></svg><span class="msg__text">常规消息提示</span><span class="msg__link">查看</span></div>
+      <div class="msg"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#2E8FCC"/><circle cx="10" cy="6.6" r="1.15" fill="#fff"/><rect x="8.85" y="9.6" width="2.3" height="4.8" rx="1.15" fill="#fff"/></svg><span class="msg__text">常规消息提示</span><button type="button" class="msg__close" aria-label="关闭"><svg viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3 3l6 6M9 3l-6 6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></button></div>
       </div>
-      <p class="demo-label">带「查看」/ 带关闭 / 两者都有 · 关闭按钮 20×20（padding 4 + 图标 12）</p>
+
       <hr class="doc-rule">
-      <h2 id="message-notification" class="doc-h2">Notification 通知卡<a class="doc-anchor" href="#message-notification" aria-label="锚点">#</a></h2>
-      <p class="doc-p">白底卡片、圆角 16、内边距 16；左侧 24px 图标，右侧标题（16/24 600）+ 说明（14/22），底部右对齐一组按钮。小尺寸 420 宽，大尺寸 800 宽。</p>
-<div class="stage stage--plain">
-        <div class="notify notify--info">
-          <div class="notify__main">
-            <span class="notify__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-<g transform="translate(0.0 0.0)">
-<path id="message-Subtract" d="M12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2ZM12 9C11.4477 9 11 9.44772 11 10V16C11 16.5523 11.4477 17 12 17C12.5523 17 13 16.5523 13 16V10C13 9.44772 12.5523 9 12 9ZM12 6C11.4477 6 11 6.44772 11 7C11 7.55228 11.4477 8 12 8C12.5523 8 13 7.55228 13 7C13 6.44772 12.5523 6 12 6Z" fill-rule="evenodd" clip-rule="evenodd" fill="currentColor"/>
-</g>
-</svg></span>
-            <div class="notify__body">
-              <div class="notify__head"><span class="notify__title">常规消息提示</span></div>
-              <span class="notify__desc">常规消息提示辅助说明文案，可换行显示</span>
-            </div>
-          </div>
-          <div class="notify__actions">
-            <button type="button" class="btn btn--secondary">次按钮</button>
-            <button type="button" class="btn btn--primary">主按钮</button>
-          </div>
+
+      <h2 id="message-notification" class="doc-h2">Notification<a class="doc-anchor" href="#message-notification" aria-label="锚点">#</a></h2>
+      <p class="doc-p">宽 420（大尺寸 800），内边距 16，圆角 16；图标 24，标题 16/24·600，说明 14/22，底部按钮右对齐。</p>
+
+      <div class="nt-demo">
+      <div class="nt">
+        <div class="nt__top">
+          <span class="nt__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="12" fill="#2E8FCC"/><circle cx="12" cy="7.92" r="1.15" fill="#fff"/><rect x="10.85" y="11.52" width="2.3" height="5.76" rx="1.15" fill="#fff"/></svg></span>
+          <span class="nt__body">
+            <span class="nt__title-row"><span class="nt__title">常规消息提示</span></span>
+            <span class="nt__desc">常规消息提示辅助说明文案，可换行显示</span>
+          </span>
+        </div>
+        <div class="nt__foot">
+          <button type="button" class="nt__btn nt__btn--ghost">次按钮</button>
+          <button type="button" class="nt__btn nt__btn--primary">主按钮</button>
         </div>
       </div>
-      <p class="demo-label">小尺寸 420 × 134 · 双按钮 · Shadow_dropdown 三层</p>
-<div class="stage stage--plain">
-        <div class="notify notify--success">
-          <div class="notify__main">
-            <span class="notify__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-<g transform="translate(0.0 0.0)">
-<path id="message-Subtract" d="M12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2ZM16.707 8.29297C16.3165 7.90258 15.6835 7.90253 15.293 8.29297L10.666 12.9189L8.70703 10.96C8.31651 10.5696 7.68346 10.5695 7.29297 10.96C6.90269 11.3505 6.90264 11.9836 7.29297 12.374L9.95996 15.04C10.3505 15.4304 10.9835 15.4305 11.374 15.04L16.707 9.70703C17.0975 9.31654 17.0974 8.68349 16.707 8.29297Z" fill-rule="evenodd" clip-rule="evenodd" fill="currentColor"/>
-</g>
-</svg></span>
-            <div class="notify__body">
-              <div class="notify__head"><span class="notify__title">任务已完成</span><button type="button" class="toast__close" aria-label="关闭"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-<g transform="translate(1.7501 1.7501)">
-<path id="message-Union" d="M7.64596 0.146414C7.84118 -0.0488087 8.15772 -0.0487298 8.35299 0.146414C8.54825 0.341676 8.54825 0.658183 8.35299 0.853445L4.95651 4.24944L8.35348 7.64641C8.54854 7.84167 8.54861 8.15824 8.35348 8.35345C8.15828 8.54865 7.84172 8.54853 7.64645 8.35345L4.24947 4.95647L0.853478 8.35345C0.658254 8.54862 0.341705 8.54857 0.146447 8.35345C-0.0488011 8.1582 -0.0487722 7.84168 0.146447 7.64641L3.54244 4.24944L0.146447 0.853445C-0.0488155 0.658183 -0.0488155 0.341676 0.146447 0.146414C0.341714 -0.0487829 0.658237 -0.0488264 0.853478 0.146414L4.24947 3.54241L7.64596 0.146414Z" fill="currentColor"/>
-</g>
-</svg></button></div>
-              <span class="notify__desc">「上周会议日程分析」已生成，可在右侧预览区查看</span>
-            </div>
-          </div>
-          <div class="notify__actions">
-            <button type="button" class="btn btn--secondary">次按钮</button>
-            <button type="button" class="btn btn--primary">主按钮</button>
-          </div>
+      <div class="nt">
+        <div class="nt__top">
+          <span class="nt__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="12" fill="#14B3AE"/><path d="M6.96 12.48 L10.56 16.08 L17.28 8.4" stroke="#fff" stroke-width="2.64" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span class="nt__body">
+            <span class="nt__title-row"><span class="nt__title">操作成功提示</span></span>
+            <span class="nt__desc">常规消息提示辅助说明文案，可换行显示</span>
+          </span>
+        </div>
+        <div class="nt__foot">
+          <button type="button" class="nt__btn nt__btn--ghost">次按钮</button>
+          <button type="button" class="nt__btn nt__btn--primary">主按钮</button>
         </div>
       </div>
-      <p class="demo-label">带关闭按钮：出现在标题右侧</p>
-<div class="stage stage--plain">
-        <div class="notify notify--lg notify--info">
-          <div class="notify__main">
-            <span class="notify__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-<g transform="translate(0.0 0.0)">
-<path id="message-Subtract" d="M12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2ZM12 9C11.4477 9 11 9.44772 11 10V16C11 16.5523 11.4477 17 12 17C12.5523 17 13 16.5523 13 16V10C13 9.44772 12.5523 9 12 9ZM12 6C11.4477 6 11 6.44772 11 7C11 7.55228 11.4477 8 12 8C12.5523 8 13 7.55228 13 7C13 6.44772 12.5523 6 12 6Z" fill-rule="evenodd" clip-rule="evenodd" fill="currentColor"/>
-</g>
-</svg></span>
-            <div class="notify__body">
-              <div class="notify__head"><span class="notify__title">常规消息提示</span></div>
-              <span class="notify__desc">大尺寸用于 Input 上方，放更长的说明与更多操作</span>
-            </div>
-          </div>
-          <div class="notify__actions">
-            <button type="button" class="btn btn--secondary">次按钮</button>
-            <button type="button" class="btn btn--primary">主按钮</button>
-          </div>
+      <div class="nt">
+        <div class="nt__top">
+          <span class="nt__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="12" fill="#EC6A56"/><rect x="10.95" y="6.24" width="2.1" height="7.2" rx="1.05" fill="#fff"/><circle cx="12" cy="17.52" r="1.05" fill="#fff"/></svg></span>
+          <span class="nt__body">
+            <span class="nt__title-row"><span class="nt__title">警告消息提示</span></span>
+            <span class="nt__desc">常规消息提示辅助说明文案，可换行显示</span>
+          </span>
+        </div>
+        <div class="nt__foot">
+          <button type="button" class="nt__btn nt__btn--ghost">次按钮</button>
+          <button type="button" class="nt__btn nt__btn--primary">主按钮</button>
         </div>
       </div>
-      <p class="demo-label">大尺寸 800 × 134 · 结构与小尺寸完全一致，只是更宽</p>
-      <hr class="doc-rule">
-      <h2 id="message-types" class="doc-h2">四种语义<a class="doc-anchor" href="#message-types" aria-label="锚点">#</a></h2>
-      <p class="doc-p">Notification 的四种类型与 Message 一致，只换图标，标题与说明都保持主文字色。</p>
-      <table class="spec-table">
-        <thead>
-          <tr><th>类型</th><th>图标</th><th>图标色</th><th>典型场景</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>普通提示</td><td>常规通知（实心圆 i）</td><td>#2E8FCC</td><td>任务开始、信息同步</td></tr>
-          <tr><td>成功提示</td><td>完成（实心圆勾）</td><td>#14B3AE</td><td>任务完成、保存成功</td></tr>
-          <tr><td>警告提示</td><td>警告（实心圆 !）</td><td>#DE9A3C</td><td>部分失败、需要留意</td></tr>
-          <tr><td>错误提示</td><td>错误（实心圆 ×）</td><td>#EC6A56</td><td>执行失败、数据异常</td></tr>
-        </tbody>
-      </table>
-      <p class="doc-p">图标色是<strong>写死在图标素材里</strong>的语义色，不跟随文字颜色；文字与标题仍是 #12222E。</p>
-      <hr class="doc-rule">
-      <h2 id="message-position" class="doc-h2">位置<a class="doc-anchor" href="#message-position" aria-label="锚点">#</a></h2>
-<div class="stage stage--plain">
-        <div class="pos-stage">
-                  <div class="toast toast--success"><span class="toast__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-<g transform="translate(0.0 0.0)">
-<path id="message-Subtract" d="M12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2ZM16.707 8.29297C16.3165 7.90258 15.6835 7.90253 15.293 8.29297L10.666 12.9189L8.70703 10.96C8.31651 10.5696 7.68346 10.5695 7.29297 10.96C6.90269 11.3505 6.90264 11.9836 7.29297 12.374L9.95996 15.04C10.3505 15.4304 10.9835 15.4305 11.374 15.04L16.707 9.70703C17.0975 9.31654 17.0974 8.68349 16.707 8.29297Z" fill-rule="evenodd" clip-rule="evenodd" fill="currentColor"/>
-</g>
-</svg></span><span class="toast__text">已保存</span></div>
-                  <div class="notify notify--info">
-          <div class="notify__main">
-            <span class="notify__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-<g transform="translate(0.0 0.0)">
-<path id="message-Subtract" d="M12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2ZM12 9C11.4477 9 11 9.44772 11 10V16C11 16.5523 11.4477 17 12 17C12.5523 17 13 16.5523 13 16V10C13 9.44772 12.5523 9 12 9ZM12 6C11.4477 6 11 6.44772 11 7C11 7.55228 11.4477 8 12 8C12.5523 8 13 7.55228 13 7C13 6.44772 12.5523 6 12 6Z" fill-rule="evenodd" clip-rule="evenodd" fill="currentColor"/>
-</g>
-</svg></span>
-            <div class="notify__body">
-              <div class="notify__head"><span class="notify__title">常规消息提示</span><button type="button" class="toast__close" aria-label="关闭"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-<g transform="translate(1.7501 1.7501)">
-<path id="message-Union" d="M7.64596 0.146414C7.84118 -0.0488087 8.15772 -0.0487298 8.35299 0.146414C8.54825 0.341676 8.54825 0.658183 8.35299 0.853445L4.95651 4.24944L8.35348 7.64641C8.54854 7.84167 8.54861 8.15824 8.35348 8.35345C8.15828 8.54865 7.84172 8.54853 7.64645 8.35345L4.24947 4.95647L0.853478 8.35345C0.658254 8.54862 0.341705 8.54857 0.146447 8.35345C-0.0488011 8.1582 -0.0487722 7.84168 0.146447 7.64641L3.54244 4.24944L0.146447 0.853445C-0.0488155 0.658183 -0.0488155 0.341676 0.146447 0.146414C0.341714 -0.0487829 0.658237 -0.0488264 0.853478 0.146414L4.24947 3.54241L7.64596 0.146414Z" fill="currentColor"/>
-</g>
-</svg></button></div>
-              <span class="notify__desc">小尺寸常驻右上角</span>
-            </div>
-          </div>
+      <div class="nt">
+        <div class="nt__top">
+          <span class="nt__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="12" fill="#D6403A"/><path d="M7.92 7.92 L16.08 16.08 M16.08 7.92 L7.92 16.08" stroke="#fff" stroke-width="2.64" stroke-linecap="round"/></svg></span>
+          <span class="nt__body">
+            <span class="nt__title-row"><span class="nt__title">错误消息提示</span></span>
+            <span class="nt__desc">常规消息提示辅助说明文案，可换行显示</span>
+          </span>
         </div>
+        <div class="nt__foot">
+          <button type="button" class="nt__btn nt__btn--ghost">次按钮</button>
+          <button type="button" class="nt__btn nt__btn--primary">主按钮</button>
         </div>
       </div>
-      <p class="demo-label">Message 顶部居中 32px · Notification 右上角 32px</p>
-      <table class="spec-table">
-        <thead>
-          <tr><th>形态</th><th>位置</th><th>叠加规则</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>Message</td><td>页面顶部居中，距顶 32px</td><td>同时最多 1 条，新消息替换旧消息</td></tr>
-          <tr><td>Notification（小）</td><td>右上角，距顶/右 32px</td><td>最多 3 条，自上而下排列，间距 8px</td></tr>
-          <tr><td>Notification（大）</td><td>Input 上方 8px</td><td>同时最多 1 条</td></tr>
-        </tbody>
-      </table>
+      </div>
+
+      <h3 class="doc-h3">大尺寸（输入框上方）</h3>
+      <div class="nt-demo">
+      <div class="nt nt--wide">
+        <div class="nt__top">
+          <span class="nt__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="12" fill="#2E8FCC"/><circle cx="12" cy="7.92" r="1.15" fill="#fff"/><rect x="10.85" y="11.52" width="2.3" height="5.76" rx="1.15" fill="#fff"/></svg></span>
+          <span class="nt__body">
+            <span class="nt__title-row"><span class="nt__title">常规消息提示</span><button type="button" class="nt__close" aria-label="关闭"><svg viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3 3l6 6M9 3l-6 6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></button></span>
+            <span class="nt__desc">常规消息提示辅助说明文案，可换行显示，大尺寸用于输入框上方，宽度与输入框一致。</span>
+          </span>
+        </div>
+        <div class="nt__foot">
+          <button type="button" class="nt__btn nt__btn--ghost">次按钮</button>
+          <button type="button" class="nt__btn nt__btn--primary">主按钮</button>
+        </div>
+      </div>
+      </div>
+
       <hr class="doc-rule">
+
       <h2 id="message-spec" class="doc-h2">规格<a class="doc-anchor" href="#message-spec" aria-label="锚点">#</a></h2>
       <table class="spec-table">
         <thead>
           <tr><th>项目</th><th>值</th></tr>
         </thead>
         <tbody>
-          <tr><td>Message 尺寸</td><td>高 38px · 最小宽 144px · 圆角 999</td></tr>
-          <tr><td>Message 内边距</td><td>8px 16px · 图标 20 · 间距 8</td></tr>
-          <tr><td>Message 文字</td><td>14px / 22px · #12222E · 单行省略</td></tr>
-          <tr><td>Message 操作</td><td>「查看」#2E8FCC · 关闭按钮 20 × 20</td></tr>
-          <tr><td>图标色</td><td>普通 #2E8FCC · 成功 #14B3AE · 警告 #DE9A3C · 错误 #EC6A56</td></tr>
-          <tr><td>Notification 尺寸</td><td>小 420 / 大 800 · 高随内容（默认 134）</td></tr>
-          <tr><td>Notification 内边距</td><td>16px · 圆角 16 · 卡片内间距 16</td></tr>
-          <tr><td>标题 / 说明</td><td>16px / 24px / 600 · 14px / 22px</td></tr>
-          <tr><td>按钮组</td><td>右对齐 · gap 12 · 次按钮 + 主按钮</td></tr>
-          <tr><td>投影</td><td>Shadow_dropdown 三层</td></tr>
-          <tr><td>边框</td><td>1px rgba(13,26,38,.08)</td></tr>
+          <tr><td>Message</td><td>高 38，内边距 8×16，圆角 999，图标 20 + 文字 14/22</td></tr>
+          <tr><td>Notification · 小</td><td>宽 420，内边距 16，圆角 16，gap 16</td></tr>
+          <tr><td>Notification · 大</td><td>宽 800（与输入框同宽），其余同小尺寸</td></tr>
+          <tr><td>标题 / 说明</td><td>16/24·600 主色；14/22 主色，可换行</td></tr>
+          <tr><td>图标</td><td>实心圆 + 白图形：普通 #2E8FCC / 成功 #14B3AE / 警告 #EC6A56 / 错误 #D6403A</td></tr>
+          <tr><td>按钮</td><td>内边距 5×16，圆角 999；次按钮灰底，主按钮品牌底白字</td></tr>
+          <tr><td>位置</td><td>Message 顶部 32；N 小 右上角 32；N 大 输入框上方 8</td></tr>
         </tbody>
       </table>
-      <p class="doc-p">动效：设计稿未标注。建议 Message 自上而下淡入 200ms（HUANG-EaseOut），2–3 秒后淡出 160ms；Notification 从右侧滑入 200ms，关闭时滑出。</p>
 
       <nav class="page-nav" aria-label="组件翻页">
         <a class="page-nav__item" href="#/suggestions"><span class="page-nav__dir">上一个</span><span class="page-nav__label">Suggestions 猜你想问</span></a>
@@ -17070,11 +17180,10 @@ html[data-theme="dark"] #view-scrollbar {
       </div>
       <nav class="doc-toc" aria-label="本页目录">
       <a class="toc__item" href="#message-when">何时使用</a>
-      <a class="toc__item" href="#message-toast">Message 轻提示</a>
-      <a class="toc__item" href="#message-notification">Notification 通知卡</a>
-      <a class="toc__item" href="#message-types">四种语义</a>
-      <a class="toc__item" href="#message-position">位置</a>
+      <a class="toc__item" href="#message-message">Message</a>
+      <a class="toc__item" href="#message-notification">Notification</a>
       <a class="toc__item" href="#message-spec">规格</a>
+
       </nav>
     </div>
   </section>
@@ -17215,118 +17324,82 @@ html[data-theme="dark"] #view-scrollbar {
       <div class="doc-content">
 
       <h1 class="doc-title">Task Notification 跨对话任务通知</h1>
-      <p class="doc-desc">跨对话任务通知是深色胶囊（200×38），在任意对话里持续显示后台任务的进度与结果。</p>
+      <p class="doc-desc">任务在后台跑时会「跳出当前对话」，用一枚深色胶囊告诉你：哪个任务在跑、跑到第几步、是否失败。</p>
       <hr class="doc-rule">
 
-<h2 id="tasknotification-when" class="doc-h2">何时使用<a class="doc-anchor" href="#tasknotification-when" aria-label="锚点">#</a></h2>
-      <p class="doc-p">跨对话任务通知用于<strong>后台任务</strong>：用户在 A 对话发起长任务，切到 B 对话后，用这条深色胶囊继续告知进度。它是网页端特有的浮层。</p>
+      <h2 id="tasknotification-when" class="doc-h2">何时使用<a class="doc-anchor" href="#tasknotification-when" aria-label="锚点">#</a></h2>
       <ul class="doc-list">
-        <li>任务在后台运行时一直显示，完成 / 异常时更新右侧状态；</li>
-        <li>同一时刻最多显示一条，多任务并发时折叠成「+N」；</li>
-        <li>点击胶囊跳回发起任务的那个对话。</li></ul>
+        <li>用户在 A 对话发起的任务，切到 B 对话后仍需要进度反馈时用它；</li>
+        <li>胶囊固定在右下角，宽 <strong>200px</strong>、高 38，圆角 999；</li>
+        <li>底色是 85% 的深色遮罩色，压在内容上也不抢视线；</li>
+        <li>多个任务并发时切换成一张 24 圆角的展开卡片。</li>
+      </ul>
       <hr class="doc-rule">
-      <h2 id="tasknotification-states" class="doc-h2">四种状态<a class="doc-anchor" href="#tasknotification-states" aria-label="锚点">#</a></h2>
-      <p class="doc-p">深色胶囊 200 × 38：左侧 20px 图标 + 任务名，右侧是进度或状态文字。</p>
-<div class="stage stage--column stage--plain">
-        <div class="taskpill"><span class="taskpill__left"><span class="taskpill__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-<g transform="translate(0.0 0.0)">
-<path id="tasknotification-Subtract" d="M12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2ZM12 8.00293C11.4491 8.00293 11.0029 8.4491 11.0029 9V13.5C11.0029 14.0509 11.4491 14.4971 12 14.4971H16.5C17.0509 14.4971 17.4971 14.0509 17.4971 13.5C17.4971 12.9491 17.0509 12.5029 16.5 12.5029H12.9971V9C12.9971 8.4491 12.5509 8.00293 12 8.00293Z" fill-rule="evenodd" clip-rule="evenodd" fill="currentColor"/>
-</g>
-</svg></span><span class="taskpill__text">会议日程分析</span></span><span class="taskpill__meta">步骤1/4</span></div>
-        <div class="taskpill"><span class="taskpill__left"><span class="taskpill__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-<g transform="translate(0.0 0.0)">
-<path id="tasknotification-Subtract" d="M12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2ZM12 8.00293C11.4491 8.00293 11.0029 8.4491 11.0029 9V13.5C11.0029 14.0509 11.4491 14.4971 12 14.4971H16.5C17.0509 14.4971 17.4971 14.0509 17.4971 13.5C17.4971 12.9491 17.0509 12.5029 16.5 12.5029H12.9971V9C12.9971 8.4491 12.5509 8.00293 12 8.00293Z" fill-rule="evenodd" clip-rule="evenodd" fill="currentColor"/>
-</g>
-</svg></span><span class="taskpill__text">会议日程分析</span></span></div>
-        <div class="taskpill"><span class="taskpill__left"><span class="taskpill__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-<g transform="translate(0.0 0.0)">
-<path id="tasknotification-Subtract" d="M12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2ZM16.707 8.29297C16.3165 7.90258 15.6835 7.90253 15.293 8.29297L10.666 12.9189L8.70703 10.96C8.31651 10.5696 7.68346 10.5695 7.29297 10.96C6.90269 11.3505 6.90264 11.9836 7.29297 12.374L9.95996 15.04C10.3505 15.4304 10.9835 15.4305 11.374 15.04L16.707 9.70703C17.0975 9.31654 17.0974 8.68349 16.707 8.29297Z" fill-rule="evenodd" clip-rule="evenodd" fill="currentColor"/>
-</g>
-</svg></span><span class="taskpill__text">会议日程分析</span></span><span class="taskpill__meta taskpill__meta--done">已完成</span></div>
-        <div class="taskpill"><span class="taskpill__left"><span class="taskpill__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-<g transform="translate(0.0 0.0)">
-<path id="tasknotification-Subtract" d="M12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2ZM12 15C11.4477 15 11 15.4477 11 16C11 16.5523 11.4477 17 12 17C12.5523 17 13 16.5523 13 16C13 15.4477 12.5523 15 12 15ZM12 6C11.4477 6 11 6.44772 11 7V13C11 13.5523 11.4477 14 12 14C12.5523 14 13 13.5523 13 13V7C13 6.44772 12.5523 6 12 6Z" fill-rule="evenodd" clip-rule="evenodd" fill="currentColor"/>
-</g>
-</svg></span><span class="taskpill__text">会议日程分析</span></span><span class="taskpill__meta taskpill__meta--warn">待处理</span></div>
+
+      <h2 id="tasknotification-basic" class="doc-h2">基础用法<a class="doc-anchor" href="#tasknotification-basic" aria-label="锚点">#</a></h2>
+      <p class="doc-p">四种类型：进行中（带步骤 / 不带步骤）、已完成、异常。</p>
+
+      <h3 class="doc-h3">进行中 · 有步骤</h3>
+      <div class="tn-demo">      <div class="tn"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="8" stroke="rgba(255,255,255,0.35)" stroke-width="2"/><path d="M10 2 A8 8 0 0 1 18 10" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/></svg><span class="tn__text">上周会议日程分析</span><span class="tn__step">步骤1/4</span></div>
       </div>
-      <p class="demo-label">进行中-有步骤 / 进行中-无步骤 / 已完成 / 异常通知</p>
-      <hr class="doc-rule">
-      <h2 id="tasknotification-hover" class="doc-h2">悬停<a class="doc-anchor" href="#tasknotification-hover" aria-label="锚点">#</a></h2>
-      <p class="doc-p">悬停时右侧出现 16px 关闭按钮，允许用户主动收起通知；深色底上的图标与文字都是白色。</p>
-<div class="stage stage--plain">
-        <div class="taskpill"><span class="taskpill__left"><span class="taskpill__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-<g transform="translate(0.0 0.0)">
-<path id="tasknotification-Subtract" d="M12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2ZM12 8.00293C11.4491 8.00293 11.0029 8.4491 11.0029 9V13.5C11.0029 14.0509 11.4491 14.4971 12 14.4971H16.5C17.0509 14.4971 17.4971 14.0509 17.4971 13.5C17.4971 12.9491 17.0509 12.5029 16.5 12.5029H12.9971V9C12.9971 8.4491 12.5509 8.00293 12 8.00293Z" fill-rule="evenodd" clip-rule="evenodd" fill="currentColor"/>
-</g>
-</svg></span><span class="taskpill__text">会议日程分析</span></span><span class="taskpill__meta">步骤1/4</span><span class="taskpill__close"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-<g transform="translate(1.7501 1.7501)">
-<path id="tasknotification-Union" d="M7.64596 0.146414C7.84118 -0.0488087 8.15772 -0.0487298 8.35299 0.146414C8.54825 0.341676 8.54825 0.658183 8.35299 0.853445L4.95651 4.24944L8.35348 7.64641C8.54854 7.84167 8.54861 8.15824 8.35348 8.35345C8.15828 8.54865 7.84172 8.54853 7.64645 8.35345L4.24947 4.95647L0.853478 8.35345C0.658254 8.54862 0.341705 8.54857 0.146447 8.35345C-0.0488011 8.1582 -0.0487722 7.84168 0.146447 7.64641L3.54244 4.24944L0.146447 0.853445C-0.0488155 0.658183 -0.0488155 0.341676 0.146447 0.146414C0.341714 -0.0487829 0.658237 -0.0488264 0.853478 0.146414L4.24947 3.54241L7.64596 0.146414Z" fill="currentColor"/>
-</g>
-</svg></span></div>
+
+      <h3 class="doc-h3">进行中 · 无步骤</h3>
+      <div class="tn-demo">      <div class="tn"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="8" stroke="rgba(255,255,255,0.35)" stroke-width="2"/><path d="M10 2 A8 8 0 0 1 18 10" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/></svg><span class="tn__text">正在整理会议纪要</span></div>
       </div>
-      <p class="demo-label">悬停态：进度文字 + 关闭按钮</p>
+
+      <h3 class="doc-h3">已完成</h3>
+      <div class="tn-demo">      <div class="tn"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 2.8a4.6 4.6 0 0 1 4.6 4.6v2.9l1.3 2.3H4.1l1.3-2.3V7.4A4.6 4.6 0 0 1 10 2.8Z" stroke="#FFFFFF" stroke-width="1.6" stroke-linejoin="round"/><path d="M8.2 15.1a1.9 1.9 0 0 0 3.6 0" stroke="#FFFFFF" stroke-width="1.6" stroke-linecap="round"/></svg><span class="tn__text">上周会议日程分析</span><span class="tn__step tn__step--success">已完成</span></div>
+      </div>
+
+      <h3 class="doc-h3">异常通知</h3>
+      <div class="tn-demo">      <div class="tn"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 2.8a4.6 4.6 0 0 1 4.6 4.6v2.9l1.3 2.3H4.1l1.3-2.3V7.4A4.6 4.6 0 0 1 10 2.8Z" stroke="#FFFFFF" stroke-width="1.6" stroke-linejoin="round"/><path d="M8.2 15.1a1.9 1.9 0 0 0 3.6 0" stroke="#FFFFFF" stroke-width="1.6" stroke-linecap="round"/></svg><span class="tn__text">上周会议日程分析</span><span class="tn__step tn__step--warning">待处理</span></div>
+      </div>
+
       <hr class="doc-rule">
+
+      <h2 id="tasknotification-multi" class="doc-h2">多任务并发<a class="doc-anchor" href="#tasknotification-multi" aria-label="锚点">#</a></h2>
+      <p class="doc-p">收起时与普通胶囊一致；展开后变成 200×118 的卡片，逐条列出任务与步骤。</p>
+
+      <h3 class="doc-h3">收起</h3>
+      <div class="tn-demo">
+      <div class="tn"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="8" stroke="rgba(255,255,255,0.35)" stroke-width="2"/><path d="M10 2 A8 8 0 0 1 18 10" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/></svg><span class="tn__text">2个任务后台运行中</span></div>
+      <div class="tn is-hover"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="8" stroke="rgba(255,255,255,0.35)" stroke-width="2"/><path d="M10 2 A8 8 0 0 1 18 10" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/></svg><span class="tn__text">2个任务后台运行中</span></div>
+      </div>
+
+      <h3 class="doc-h3">展开</h3>
+      <div class="tn-demo">
+      <div class="tn tn--card">
+        <div class="tn__head">
+          <span class="tn__left"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="8" stroke="rgba(255,255,255,0.35)" stroke-width="2"/><path d="M10 2 A8 8 0 0 1 18 10" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/></svg><span class="tn__text">2个任务后台运行中</span></span>
+          <span class="tn__chev"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6.2 8 10.2l4-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </div>
+        <span class="tn__divider"></span>
+        <div class="tn__row">
+          <span class="tn__left"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="8" stroke="rgba(255,255,255,0.35)" stroke-width="2"/><path d="M10 2 A8 8 0 0 1 18 10" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/></svg><span class="tn__text">上周会议日程分析</span></span>
+          <span class="tn__step tn__step--dim">步骤1/4</span>
+        </div>
+        <div class="tn__row">
+          <span class="tn__left"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="8" stroke="rgba(255,255,255,0.35)" stroke-width="2"/><path d="M10 2 A8 8 0 0 1 18 10" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/></svg><span class="tn__text">竞品车型分析报告</span></span>
+          <span class="tn__step tn__step--dim">步骤3/4</span>
+        </div>
+      </div>      </div>
+
+      <hr class="doc-rule">
+
       <h2 id="tasknotification-spec" class="doc-h2">规格<a class="doc-anchor" href="#tasknotification-spec" aria-label="锚点">#</a></h2>
       <table class="spec-table">
         <thead>
           <tr><th>项目</th><th>值</th></tr>
         </thead>
         <tbody>
-          <tr><td>尺寸</td><td>200 × 38px（固定）</td></tr>
-          <tr><td>圆角</td><td>单条 999px · 多任务并发 24px</td></tr>
-          <tr><td>内边距</td><td>8px 16px</td></tr>
-          <tr><td>底色</td><td>rgba(13,26,38,.85) · <span class="code">--color-bg-overlay-strong</span></td></tr>
-          <tr><td>文字</td><td>14px / 22px · #FFFFFF</td></tr>
-          <tr><td>状态文字</td><td>12px / 18px / 600 · 完成 #14B3AE · 待处理 #DE9A3C</td></tr>
-          <tr><td>图标</td><td>20px（loading / 完成 / 异常）</td></tr>
-          <tr><td>关闭按钮</td><td>16px，仅悬停时出现</td></tr>
-          <tr><td>多任务并发 · 收起</td><td>200 × 38 · 圆角 24 · 展开箭头 16</td></tr>
-          <tr><td>多任务并发 · 展开</td><td>200 × 118 · 圆角 24 · 标题行 + 分割线 + 任务行</td></tr>
+          <tr><td>胶囊</td><td>200 × 38，内边距 8×16，圆角 999，底色 <code>rgba(13,26,38,.85)</code></td></tr>
+          <tr><td>图标</td><td>20（加载环 / 完成勾 / 异常感叹号），描边白色</td></tr>
+          <tr><td>任务名</td><td>14/22 白色，单行省略</td></tr>
+          <tr><td>步骤</td><td>12/18·600 白色（展开卡里用 80% 白）</td></tr>
+          <tr><td>展开卡片</td><td>200 宽，圆角 24，内边距 8×16，gap 12，中间 1px 分隔线</td></tr>
+          <tr><td>悬停</td><td>底色加深到 92%</td></tr>
         </tbody>
       </table>
-      <hr class="doc-rule">
-      <h2 id="tasknotification-stack" class="doc-h2">多任务并发<a class="doc-anchor" href="#tasknotification-stack" aria-label="锚点">#</a></h2>
-      <p class="doc-p">同时有多个后台任务时，单条胶囊会收成一条汇总：<strong>收起态</strong> 200 × 38 只显示「2个任务运行中」与展开箭头；<strong>展开态</strong> 200 × 118 把任务逐条列出，标题行换成收起箭头。两种态都用<strong>圆角 24</strong>（单条任务用 999）。</p>
-<div class="stage stage--column stage--plain">
-        <div class="taskpill">
-          <span class="taskpill__left"><span class="taskpill__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-<g transform="translate(0.0 0.0)">
-<path id="tasknotification-Subtract" d="M12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2ZM12 8.00293C11.4491 8.00293 11.0029 8.4491 11.0029 9V13.5C11.0029 14.0509 11.4491 14.4971 12 14.4971H16.5C17.0509 14.4971 17.4971 14.0509 17.4971 13.5C17.4971 12.9491 17.0509 12.5029 16.5 12.5029H12.9971V9C12.9971 8.4491 12.5509 8.00293 12 8.00293Z" fill-rule="evenodd" clip-rule="evenodd" fill="currentColor"/>
-</g>
-</svg></span><span class="taskpill__text">2个任务运行中</span></span>
-          <span class="taskstack__arrow"><svg style="transform:rotate(180deg)" width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-<g transform="translate(0.0 0.0)">
-<path id="tasknotification-Vector" d="M1.64648 4.35352C1.45122 4.15825 1.45122 3.84175 1.64648 3.64648C1.84175 3.45122 2.15825 3.45122 2.35352 3.64648L6 7.29297L9.64648 3.64648C9.84175 3.45122 10.1583 3.45122 10.3535 3.64648C10.5488 3.84175 10.5488 4.15825 10.3535 4.35352L6.35352 8.35352C6.15825 8.54878 5.84175 8.54878 5.64648 8.35352L1.64648 4.35352Z" fill="currentColor"/>
-</g>
-</svg></span>
-        </div>
-        <div class="taskstack">
-          <div class="taskstack__head">
-            <span class="taskstack__title"><span class="taskpill__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-<g transform="translate(0.0 0.0)">
-<path id="tasknotification-Subtract" d="M12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2ZM12 8.00293C11.4491 8.00293 11.0029 8.4491 11.0029 9V13.5C11.0029 14.0509 11.4491 14.4971 12 14.4971H16.5C17.0509 14.4971 17.4971 14.0509 17.4971 13.5C17.4971 12.9491 17.0509 12.5029 16.5 12.5029H12.9971V9C12.9971 8.4491 12.5509 8.00293 12 8.00293Z" fill-rule="evenodd" clip-rule="evenodd" fill="currentColor"/>
-</g>
-</svg></span><span class="taskpill__text">2个任务运行中</span></span>
-            <span class="taskstack__arrow"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-<g transform="translate(0.0 0.0)">
-<path id="tasknotification-Vector" d="M1.64648 4.35352C1.45122 4.15825 1.45122 3.84175 1.64648 3.64648C1.84175 3.45122 2.15825 3.45122 2.35352 3.64648L6 7.29297L9.64648 3.64648C9.84175 3.45122 10.1583 3.45122 10.3535 3.64648C10.5488 3.84175 10.5488 4.15825 10.3535 4.35352L6.35352 8.35352C6.15825 8.54878 5.84175 8.54878 5.64648 8.35352L1.64648 4.35352Z" fill="currentColor"/>
-</g>
-</svg></span>
-          </div>
-          <div class="taskstack__divider"></div>
-          <div class="taskstack__row"><span class="taskpill__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-<g transform="translate(0.0 0.0)">
-<path id="tasknotification-Subtract" d="M12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2ZM12 8.00293C11.4491 8.00293 11.0029 8.4491 11.0029 9V13.5C11.0029 14.0509 11.4491 14.4971 12 14.4971H16.5C17.0509 14.4971 17.4971 14.0509 17.4971 13.5C17.4971 12.9491 17.0509 12.5029 16.5 12.5029H12.9971V9C12.9971 8.4491 12.5509 8.00293 12 8.00293Z" fill-rule="evenodd" clip-rule="evenodd" fill="currentColor"/>
-</g>
-</svg></span><span class="taskpill__text">会议日程分析</span><span class="taskstack__step">步骤1/4</span></div>
-          <div class="taskstack__row"><span class="taskpill__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-<g transform="translate(0.0 0.0)">
-<path id="tasknotification-Subtract" d="M12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2ZM12 8.00293C11.4491 8.00293 11.0029 8.4491 11.0029 9V13.5C11.0029 14.0509 11.4491 14.4971 12 14.4971H16.5C17.0509 14.4971 17.4971 14.0509 17.4971 13.5C17.4971 12.9491 17.0509 12.5029 16.5 12.5029H12.9971V9C12.9971 8.4491 12.5509 8.00293 12 8.00293Z" fill-rule="evenodd" clip-rule="evenodd" fill="currentColor"/>
-</g>
-</svg></span><span class="taskpill__text">竞品车型分析报告</span><span class="taskstack__step">步骤3/4</span></div>
-        </div>
-      </div>
-      <p class="demo-label">收起 200 × 38 · 展开 200 × 118 · 圆角 24 · 分割线 rgba(255,255,255,.16)</p>
 
       <nav class="page-nav" aria-label="组件翻页">
         <a class="page-nav__item" href="#/alert"><span class="page-nav__dir">上一个</span><span class="page-nav__label">Alert 警告提示</span></a>
@@ -17335,9 +17408,10 @@ html[data-theme="dark"] #view-scrollbar {
       </div>
       <nav class="doc-toc" aria-label="本页目录">
       <a class="toc__item" href="#tasknotification-when">何时使用</a>
-      <a class="toc__item" href="#tasknotification-states">四种状态</a>
-      <a class="toc__item" href="#tasknotification-hover">悬停</a>
+      <a class="toc__item" href="#tasknotification-basic">基础用法</a>
+      <a class="toc__item" href="#tasknotification-multi">多任务并发</a>
       <a class="toc__item" href="#tasknotification-spec">规格</a>
+
       </nav>
     </div>
   </section>
