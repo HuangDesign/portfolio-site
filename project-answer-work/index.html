@@ -24,7 +24,7 @@
           <li><a href="../project-answer/index.html">AI助手</a></li>
           <li><a href="../project-talent/index.html">华为实训云平台</a></li>
           <li><a href="../project-alarm/index.html">实时报警系统</a></li>
-          <li><a href="../design-system/index.html">设计规范</a></li>
+          <li><a href="../design-system/index.html">Agent 设计规范</a></li>
           <li><a href="../about-method/index.html">个人影响力</a></li>
         </ul>
       </nav>
@@ -209,25 +209,26 @@
         <h2 class="sec-title"><em>能力边界：</em>先决定不做什么</h2>
         <p class="sec-lead">Answer 只做「入口」，不做垂直场景；把垂域能力封装成工具，交给主 Agent 调度。</p>
 
-        <div class="chain">
+        <div class="chain chain--3">
           <div class="chain-row">
-            <span class="chain-k">因为</span>
+            <span class="chain-k"><svg class="chain-ico" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="5.6" r="2.5" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M8 8.1v4.6M5.2 12.7h5.6" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>因为</span>
             <p class="chain-v">信息散在 WeLink 文档、群聊、知识中心、BI、代码仓库；跨系统办事要反复复制粘贴；敏感数据不敢上云。</p>
           </div>
+          <span class="chain-arrow" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M2.6 8h9M8.6 4.8 12 8l-3.4 3.2" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
           <div class="chain-row">
-            <span class="chain-k">导致</span>
+            <span class="chain-k"><svg class="chain-ico" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.6 8h9.2M8.8 4.8 12 8l-3.2 3.2" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>导致</span>
             <p class="chain-v">一天里大量时间花在「找」和「搬」上，真正的判断被切碎；<b>所以需要一个懂公司知识、能跨系统执行的通用入口</b>。</p>
           </div>
+          <span class="chain-arrow" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M2.6 8h9M8.6 4.8 12 8l-3.4 3.2" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
           <div class="chain-row">
-            <span class="chain-k">但是</span>
+            <span class="chain-k"><svg class="chain-ico" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.8 4.6h4.1a3.5 3.5 0 0 1 3.5 3.5v2.5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M8 8.2 10.4 10.6 12.8 8.2" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>但是</span>
             <p class="chain-v">如果通用助手什么都做，既做不深，又会和垂直业务团队正面冲突，用户面对多个助手只会<b>选错一次就不再信任</b>。</p>
           </div>
           <div class="chain-row chain-row--end">
-            <span class="chain-k">所以</span>
+            <span class="chain-k"><svg class="chain-ico" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="5.2" fill="none" stroke="currentColor" stroke-width="1.4"/><circle cx="8" cy="8" r="2.1" fill="none" stroke="currentColor" stroke-width="1.4"/><circle cx="8" cy="8" r=".95" fill="currentColor"/></svg>方案策略</span>
             <p class="chain-v">确立战略边界：<b>Chat 是入口，垂域是能力</b>。主 Agent 负责意图分发与权限校验；解决方案生成、合规审核等垂域助手经 A2A 封装为工具，由主 Agent 统一决策调用，办公与专业隔离。</p>
           </div>
         </div>
-
         <p class="case-body">这条边界写进 PRD 的第一页，后续所有需求都在这个框架下展开——用户只需要记住一个入口。</p>
 
         <figure class="boundary">
@@ -270,21 +271,21 @@
         <h2 class="sec-title"><em>产品骨架：</em>一个入口，四个「能」，三种形态</h2>
         <p class="sec-lead">用「四个能」定义价值，用「三种形态」定义场景，用「四个全」定义底座。</p>
 
-        <div class="chain">
+        <div class="chain chain--3">
           <div class="chain-row">
-            <span class="chain-k">因为</span>
+            <span class="chain-k"><svg class="chain-ico" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="5.6" r="2.5" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M8 8.1v4.6M5.2 12.7h5.6" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>因为</span>
             <p class="chain-v">用户的日常需求跨度极大——查资料、干活、造东西、让助手越用越懂自己，单一问答接不住。</p>
-          </div>
+          </div><span class="chain-arrow" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M2.6 8h9M8.6 4.8 12 8l-3.4 3.2" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
           <div class="chain-row">
-            <span class="chain-k">所以</span>
+            <span class="chain-k"><svg class="chain-ico" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="5.2" fill="none" stroke="currentColor" stroke-width="1.4"/><circle cx="8" cy="8" r="2.1" fill="none" stroke="currentColor" stroke-width="1.4"/><circle cx="8" cy="8" r=".95" fill="currentColor"/></svg>所以</span>
             <p class="chain-v">拆成四个「能」：<b>能查</b>（知识 / 数据 / 会议 / 文档）、<b>能干活</b>（任务执行 / 自动化）、<b>能创造</b>（建技能 / 出成品）、<b>能成长</b>（记忆与偏好）。</p>
-          </div>
+          </div><span class="chain-arrow" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M2.6 8h9M8.6 4.8 12 8l-3.4 3.2" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
           <div class="chain-row">
-            <span class="chain-k">因为</span>
+            <span class="chain-k"><svg class="chain-ico" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="5.6" r="2.5" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M8 8.1v4.6M5.2 12.7h5.6" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>因为</span>
             <p class="chain-v">使用场景的物理位置不同：在群里随手问、在电脑前深度工作、处理不方便上云的本地文件。</p>
           </div>
           <div class="chain-row chain-row--end">
-            <span class="chain-k">所以</span>
+            <span class="chain-k"><svg class="chain-ico" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="5.2" fill="none" stroke="currentColor" stroke-width="1.4"/><circle cx="8" cy="8" r="2.1" fill="none" stroke="currentColor" stroke-width="1.4"/><circle cx="8" cy="8" r=".95" fill="currentColor"/></svg>所以</span>
             <p class="chain-v">三种形态：<b>Bot 最无缝</b>、<b>Web 最沉浸</b>、<b>Pro 最安全</b>。三端共用一套知识与记忆，形态只决定「在哪用」，不决定「能不能用」。</p>
           </div>
         </div>
@@ -355,17 +356,17 @@
         <h2 class="sec-title"><em>入口与状态：</em>把承诺还给系统</h2>
         <p class="sec-lead">互斥交给 Agent 判断，默认值交给用户显式选择——入口和状态，都不该替系统做承诺。</p>
 
-        <div class="chain">
+        <div class="chain chain--3">
           <div class="chain-row">
-            <span class="chain-k">因为</span>
+            <span class="chain-k"><svg class="chain-ico" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="5.6" r="2.5" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M8 8.1v4.6M5.2 12.7h5.6" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>因为</span>
             <p class="chain-v">前端硬编码「选了助手就不能传文件 / 用技能」；知识源有 3 个入口，全量用户中仅约 700 人使用且极易选错。首页又自动恢复历史配置、勾选「企业知识」，把用户要用的工具顶掉；模型无输出时仍摆着「复制 / 分享」，任务失败仍有点赞。</p>
-          </div>
+          </div><span class="chain-arrow" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M2.6 8h9M8.6 4.8 12 8l-3.4 3.2" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
           <div class="chain-row">
-            <span class="chain-k">导致</span>
+            <span class="chain-k"><svg class="chain-ico" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.6 8h9.2M8.8 4.8 12 8l-3.2 3.2" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>导致</span>
             <p class="chain-v">任务直接报错，用户无法理解「为什么选了助手就不能传文件」；<b>无感知失败</b>与<b>无效点击</b>同时发生，解释成本高于功能本身，信任被一点点磨掉。</p>
           </div>
           <div class="chain-row chain-row--end">
-            <span class="chain-k">所以</span>
+            <span class="chain-k"><svg class="chain-ico" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="5.2" fill="none" stroke="currentColor" stroke-width="1.4"/><circle cx="8" cy="8" r="2.1" fill="none" stroke="currentColor" stroke-width="1.4"/><circle cx="8" cy="8" r=".95" fill="currentColor"/></svg>所以</span>
             <p class="chain-v">取消前端硬约束，改由 Agent 做意图识别与冲突消解；三个知识源入口收敛成一个下拉，并支持个人快捷入口。企业知识改为手动触发；Feedback 按任务状态收敛展示前提——无输出不显示复制与分享，失败不显示点赞，分享的对话整组隐藏反馈。</p>
           </div>
         </div>
@@ -428,17 +429,17 @@
         <h2 class="sec-title"><em>反馈闭环：</em>把「情绪」变成「可定位的问题」</h2>
         <p class="sec-lead">反馈的价值不在数量，在于能不能直接分派给一个负责人。</p>
 
-        <div class="chain">
+        <div class="chain chain--3">
           <div class="chain-row">
-            <span class="chain-k">因为</span>
+            <span class="chain-k"><svg class="chain-ico" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="5.6" r="2.5" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M8 8.1v4.6M5.2 12.7h5.6" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>因为</span>
             <p class="chain-v">用户点踩后大多不填原因，旧流程「场景空值」导致人工分单效率低，这批记录被统一标记「暂不处理」。</p>
-          </div>
+          </div><span class="chain-arrow" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M2.6 8h9M8.6 4.8 12 8l-3.4 3.2" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
           <div class="chain-row">
-            <span class="chain-k">导致</span>
+            <span class="chain-k"><svg class="chain-ico" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.6 8h9.2M8.8 4.8 12 8l-3.2 3.2" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>导致</span>
             <p class="chain-v">反馈等于白收：产品拿不到可迭代的信息，只能凭印象排期，改完之后也无法证明有没有变好。</p>
           </div>
           <div class="chain-row chain-row--end">
-            <span class="chain-k">所以</span>
+            <span class="chain-k"><svg class="chain-ico" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="5.2" fill="none" stroke="currentColor" stroke-width="1.4"/><circle cx="8" cy="8" r="2.1" fill="none" stroke="currentColor" stroke-width="1.4"/><circle cx="8" cy="8" r=".95" fill="currentColor"/></svg>所以</span>
             <p class="chain-v">标签升级为「问题类型 + 所属模块」<b>两级强制选择</b>，选完自动映射模块跟进人；未选标签提交置灰；后台可配置（草稿 / 发布 / 回滚 / 兜底）。</p>
           </div>
         </div>
@@ -488,17 +489,17 @@
         <h2 class="sec-title"><em>机制设计：</em>先画理想体验，再倒推架构</h2>
         <p class="sec-lead">团队最大的风险不是做错，是把一年前的架构当成边界。</p>
 
-        <div class="chain">
+        <div class="chain chain--3">
           <div class="chain-row">
-            <span class="chain-k">因为</span>
+            <span class="chain-k"><svg class="chain-ico" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="5.6" r="2.5" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M8 8.1v4.6M5.2 12.7h5.6" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>因为</span>
             <p class="chain-v">团队长期在现有功能上做正向迭代，把第一版架构当成不可动的约束，评审时大量时间花在理解名词与方案表面。</p>
-          </div>
+          </div><span class="chain-arrow" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M2.6 8h9M8.6 4.8 12 8l-3.4 3.2" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
           <div class="chain-row">
-            <span class="chain-k">导致</span>
+            <span class="chain-k"><svg class="chain-ico" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.6 8h9.2M8.8 4.8 12 8l-3.2 3.2" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>导致</span>
             <p class="chain-v">只优化表面，错过范式级机会；同一类短板（北极星不端到端、多目标冲突、架构易推倒）反复出现，却没人纠正。</p>
           </div>
           <div class="chain-row chain-row--end">
-            <span class="chain-k">所以</span>
+            <span class="chain-k"><svg class="chain-ico" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="5.2" fill="none" stroke="currentColor" stroke-width="1.4"/><circle cx="8" cy="8" r="2.1" fill="none" stroke="currentColor" stroke-width="1.4"/><circle cx="8" cy="8" r=".95" fill="currentColor"/></svg>所以</span>
             <p class="chain-v">内审推行强制顺序：<b>先画理想链路 → 再推架构 → 最后按技术约束取舍</b>；评审必须带「异常 / 空态 / 阻断 / 进度」四类稿。</p>
           </div>
         </div>
