@@ -239,14 +239,13 @@ body.case-page ::selection { background: var(--accent); color: #fff; }
   color: transparent;
 }
 .sec-lead {
-  margin-top: 18px;
-  padding: 13px 18px;
-  border-radius: 10px;
-  border: 1px solid rgba(86, 128, 255, .18);
-  background: linear-gradient(100deg, #eaf1ff 0%, #f3ecff 100%);
-  color: #26304d;
-  font-size: 15px;
-  font-weight: 600;
+  margin-top: 14px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: #2f3a52;
+  font-size: 16px;
+  font-weight: 500;
   line-height: 1.75;
   text-wrap: pretty;
 }
@@ -1539,7 +1538,7 @@ body.lb-open { overflow: hidden; }
   .case-nav__inner { gap: 20px; height: 44px; }
   .case-sec { padding: 56px 0; }
   .sec-title { font-size: clamp(24px, 7vw, 30px); }
-  .sec-lead { font-size: 14px; padding: 12px 14px; }
+  .sec-lead { font-size: 15px; }
   .chain { grid-template-columns: minmax(0, 1fr); }
   .chain-row--end { grid-column: auto; }
   .chain--3 { flex-direction: column; }
