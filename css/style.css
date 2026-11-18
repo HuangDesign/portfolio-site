@@ -69,6 +69,15 @@ a { color: inherit; text-decoration: none; }
 /* ---------- 排版规则：阅读宽度 / 断行 ---------- */
 h1, h2, h3 { text-wrap: balance; }
 p, figcaption, .fishbone .node-detail { text-wrap: pretty; }
+.h1-pre {
+  display: block;
+  margin-bottom: 10px;
+  font-size: .4em;
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -.02em;
+  color: #1a1a1a;
+}
 .hero .intro, .project-hero .lead, .module .module-desc { text-wrap: balance; }
 .ln { display: block; }
 .hero .meta a, .hero .meta span,
@@ -295,6 +304,15 @@ p, figcaption, .fishbone .node-detail { text-wrap: pretty; }
   overflow: hidden; border-radius: 6px;
   background: var(--soft);
   transition: opacity .3s var(--ease), transform .35s var(--ease);
+}
+.index-h3-pre {
+  display: block;
+  margin-bottom: 2px;
+  font-size: .56em;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: -.01em;
+  color: var(--ink-3);
 }
 .index-thumb img { width: 100%; height: 100%; object-fit: cover; }
 .index-row:hover .index-thumb { transform: scale(1.02); }
