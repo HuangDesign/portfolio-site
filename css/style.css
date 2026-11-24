@@ -751,3 +751,78 @@ img.lazy.loaded { opacity: 1; }
   .duty-caption { width: 96px; margin-top: 0; }
   .product-grid { grid-template-columns: 1fr; }
 }
+
+/* ---------- 项目亮点卡片（案例页顶部四宫格） ---------- */
+.hero-highlights {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 36px;
+}
+.hl-card {
+  position: relative;
+  padding: 22px 22px 18px;
+  border: 1px solid rgba(50, 93, 255, .14);
+  border-radius: 18px;
+  background:
+    linear-gradient(180deg, rgba(50, 93, 255, .075) 0%, rgba(255, 255, 255, 0) 62%),
+    #fff;
+  overflow: hidden;
+  transition: transform .3s var(--ease), border-color .3s var(--ease);
+}
+.hl-card::before {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; top: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent, #325dff), var(--accent-2, #7b5cff));
+}
+.hl-card::after {
+  content: "";
+  position: absolute;
+  top: -46px; right: -46px;
+  width: 132px; height: 132px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(50, 93, 255, .12), transparent 68%);
+  pointer-events: none;
+}
+.hl-card b {
+  display: block;
+  font-size: clamp(21px, 1.75vw, 26px);
+  font-weight: 700;
+  letter-spacing: -.03em;
+  line-height: 1.2;
+  white-space: nowrap;
+  background: linear-gradient(94deg, #2447d8 0%, #7b5cff 92%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+.hl-card b small {
+  font-size: .46em;
+  font-weight: 600;
+  letter-spacing: 0;
+  color: var(--muted, #8e8e93);
+  -webkit-text-fill-color: var(--muted, #8e8e93);
+  margin-left: 3px;
+}
+.hl-card span {
+  display: block;
+  margin-top: 8px;
+  font-size: 11.5px;
+  line-height: 1.5;
+  color: var(--ink-3, #666);
+  white-space: nowrap;
+}
+.hl-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--accent-line, rgba(50, 93, 255, .2));
+}
+@media (max-width: 900px) {
+  .hero-highlights { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 30px; }
+}
+@media (max-width: 560px) {
+  .hero-highlights { grid-template-columns: minmax(0, 1fr); }
+  .hl-card { padding: 20px 18px 16px; }
+}

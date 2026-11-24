@@ -36,7 +36,6 @@ body.case-page ::selection { background: var(--accent); color: #fff; }
   grid-template-columns: minmax(0, 1fr);
   gap: clamp(28px, 4vw, 56px);
   align-items: center;
-  padding-bottom: 56px;
 }
 .case-kicker {
   display: inline-flex;
@@ -84,6 +83,8 @@ body.case-page ::selection { background: var(--accent); color: #fff; }
   line-height: 1.85;
   color: var(--ink-3);
 }
+/* AI办公 hero 导语：不设窄栏宽，整句保持一行（窄屏仍自动换行） */
+.case-hero .hero-role { max-width: none; }
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
